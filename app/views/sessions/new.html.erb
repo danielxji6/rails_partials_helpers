@@ -1,6 +1,6 @@
 <h1>Log In</h1>
 <hr>
-<form action="/sessions" method="post">
+<!-- <form action="/sessions" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <div class="form-group">
     <label for="user_email">Email</label>
@@ -11,6 +11,20 @@
     <input type="password" name="user[password]" class="form-control" id="user_password" placeholder="Your password">
   </div>
   <input type="submit" value="Log In" class="btn btn-block btn-default">
-</form>
+</form> -->
+
+<%= form_for @user, url: "/sessions" do |f| %>
+<div class="form-group">
+  <%= f.label :email %><br>
+  <%= f.text_field :email, class: "form-control", placeholder: "Your Email", autofocus: true %>
+</div>
+<div class="form-group">
+  <%= f.label :password %><br>
+  <%= f.password_field :password, class: "form-control", placeholder: "Your Passworrd" %>
+</div>
+<%= f.submit "Log In", class: "btn btn-block btn-default" %>
+<% end %>
+
+
 <br>
 <p>Don't have an account? <a href="/signup">Click here</a> to sign up.</p>
